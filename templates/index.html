@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
+  </head>
+	<body>
+		<div class="jumbotron jumbotron-fluid" style="background-color:#00F3FF">
+			<div class="container">
+				{% if businesses %}
+					<h1>Check out these top options in your area: </h1>
+					<div style="margin-top: 30px; margin-bottom: 10px;" class="row">
+					</div>
+						{% for business in businesses %}
+						<div class="row">
+							<div class="col-sm-12"><h2>-{{ business.name }}</h2>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+					<center>
+						<a href="{{ url_for('index') }}">Search Other Location</a>
+					</center>
+				{% else %}
+					<h1 style="margin-top: 6px; margin-bottom: 16px;">Hungry, are we? What's your current location?</h1>
+					<form action="/" class="form-inline">
+						<div class="form-group">
+							<input type="text" name="location" placeholder="Enter Search Here" class="form-control">
+						</div>
+					<input type="submit" value="Search" class="btn btn-primary">
+					</form>
+				{% endif %}
+			</div>
+		</div>
+	</body>
+</html>
